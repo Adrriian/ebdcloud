@@ -24,7 +24,7 @@ export default function RootLayoutApp({ children }: typeReactNode) {
                                 <h1 className="text-white  font-bold text-2xl">EBD Cloud</h1>
                                 <h1 className="font-light text-gray-400 ">Escola Bíblica Dominical</h1>
                             </div>
-                            <div onClick={closeSidebar} className="p-1 rounded-2xl bg-slate-800 dark:bg-black cursor-pointer hover:bg-gray-500 lg:hidden">
+                            <div onClick={closeSidebar} className="p-1 rounded-2xl bg-red-800 dark:bg-black cursor-pointer hover:bg-gray-500 lg:hidden">
                                 <LucideCircleX className="dark:text-white text-slate-800" />
                             </div>
 
