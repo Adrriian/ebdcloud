@@ -8,18 +8,18 @@ type typeReactNode = {
 
 export default function RootLayoutApp({ children }: typeReactNode) {
     const [width, setWidth] = useState('w-0')
-    const openSidebar = ()=>{
+    const openSidebar = () => {
         setWidth('w-75')
     }
-    const closeSidebar = ()=>{
+    const closeSidebar = () => {
         setWidth('w-0')
     }
     return (
         <div className="flex">
             <aside>
-                <div id="sidebar" className={`${width} grid grid-cols-1 grid-rows-[70px_1fr_70px] min-h-screen  gap-2 bg-slate-800 dark:bg-black overflow-hidden  z-10 absolute  transition-all duration-300 ease-linear lg:z-0 lg:static lg:w-75`}>
-                    <div>
-                        <div className="flex gap-20 items-center  dark:text-white m-2 w-70">
+                <div id="sidebar" className={`${width} flex flex-col justify-between min-h-screen  gap-2 bg-slate-800 dark:bg-black overflow-hidden  z-10 absolute  transition-all duration-300 ease-linear lg:z-0 lg:static lg:w-75`}>
+                    <div className="flex flex-col gap-2">
+                        <div className="flex justify-between p-2 items-center  dark:text-white m-2 w-70">
                             <div className="flex flex-col justify-center">
                                 <h1 className="text-white  font-bold text-2xl">EBD Cloud</h1>
                                 <h1 className="font-light text-gray-400 ">Escola Bíblica Dominical</h1>
@@ -30,49 +30,50 @@ export default function RootLayoutApp({ children }: typeReactNode) {
 
                         </div>
                         <hr className="text-white/50" />
+                        <div className=" w-full p-2 ">
+                            <nav className="flex flex-col  gap-2">
+                                <div id="classrom"
+                                    className=" flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer ">
+                                    <LucideSchool2 />
+                                    <h1 className="text-white font-bold  ">Aulas</h1>
+                                </div>
+                                <div id="student"
+                                    className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                    <LucideGraduationCap />
+                                    <h1 className="text-white font-bold ">Alunos</h1>
+                                </div>
+                                <div id="board"
+                                    className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                    <LucideChessQueen />
+                                    <h1 className="text-white font-bold ">Diretoria</h1>
+                                </div>
+                                <div id="calls"
+                                    className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                    <LucideBellRing />
+                                    <h1 className="text-white font-bold ">Chamadas</h1>
+                                </div>
+                                <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                    <LucideClipboard />
+                                    <h1 className="text-white font-bold ">Pedidos</h1>
+                                </div>
+                                <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                    <LucideChurch />
+                                    <h1 className="text-white font-bold ">Cadastrar Nova Igreja</h1>
+                                </div>
+                                <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                    <LucideUserRound />
+                                    <h1 className="text-white font-bold ">Perfil</h1>
+                                </div>
+                            </nav>
+
+                        </div>
                     </div>
 
-                    <div className="mt-8 w-70 ">
-                        <nav className="flex flex-col  gap-2">
-                            <div id="classrom"
-                                className=" flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer ">
-                                <LucideSchool2 />
-                                <h1 className="text-white font-bold  ">Aulas</h1>
-                            </div>
-                            <div id="student"
-                                className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
-                                <LucideGraduationCap />
-                                <h1 className="text-white font-bold ">Alunos</h1>
-                            </div>
-                            <div id="board"
-                                className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
-                                <LucideChessQueen />
-                                <h1 className="text-white font-bold ">Diretoria</h1>
-                            </div>
-                            <div id="calls"
-                                className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
-                                <LucideBellRing />
-                                <h1 className="text-white font-bold ">Chamadas</h1>
-                            </div>
-                            <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
-                                <LucideClipboard />
-                                <h1 className="text-white font-bold ">Pedidos</h1>
-                            </div>
-                            <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
-                                <LucideChurch />
-                                <h1 className="text-white font-bold ">Cadastrar Nova Igreja</h1>
-                            </div>
-                            <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
-                                <LucideUserRound />
-                                <h1 className="text-white font-bold ">Perfil</h1>
-                            </div>
-                        </nav>
 
-                    </div>
 
                     <div className=" flex flex-col gap-2">
                         <hr className="text-white/50" />
-                        <div id="themaMode" className="flex gap-2 p-3 items-center hover:bg-gray-500 rounded-2xl cursor-pointer ">
+                        <div id="themaMode" className="flex m-2 gap-2 p-3 items-center hover:bg-gray-500 rounded-2xl cursor-pointer ">
                             <LucideMoonStar />
                             <h1 id="themaText" className="text-white">Modo Claro</h1>
                         </div>
@@ -82,10 +83,10 @@ export default function RootLayoutApp({ children }: typeReactNode) {
             </aside>
             <div className="w-full">
                 <header className="flex p-3 gap-2 items-center bg-white dark:bg-slate-900 ">
-                        <div onClick={openSidebar} className="p-1 rounded-2xl bg-white dark:bg-slate-900 cursor-pointer lg:hidden">
-                            <Menu className="dark:text-white text-slate-800" />
-                        </div>
-                        <h1 className=" text-indigo-700 dark:text-indigo-400 font-bold text-2xl md:text-3xl">EBD Cloud</h1>
+                    <div onClick={openSidebar} className="p-1 rounded-2xl bg-white dark:bg-slate-900 cursor-pointer lg:hidden">
+                        <Menu className="dark:text-white text-slate-800" />
+                    </div>
+                    <h1 className=" text-indigo-700 dark:text-indigo-400 font-bold text-2xl md:text-3xl">EBD Cloud</h1>
                 </header>
                 <main className="flex-1">
                     {children}
