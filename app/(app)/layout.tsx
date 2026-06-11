@@ -17,7 +17,7 @@ export default function RootLayoutApp({ children }: typeReactNode) {
     return (
         <div className="flex">
             <aside>
-                <div id="sidebar" className={`${width} flex flex-col justify-around min-h-screen  gap-2 bg-slate-800 dark:bg-blue-700 overflow-hidden  z-10 absolute  transition-all duration-300 ease-linear lg:z-0 lg:static lg:w-75`}>
+                <div id="sidebar" className={`${width} flex flex-col justify-around min-h-screen  gap-2 bg-slate-800 dark:bg-pink-700 overflow-hidden  z-10 absolute  transition-all duration-300 ease-linear lg:z-0 lg:static lg:w-75`}>
                     <div className="flex flex-col gap-2">
                         <div className="flex justify-between p-2 items-center  dark:text-white m-2 w-70">
                             <div className="flex flex-col justify-center">
