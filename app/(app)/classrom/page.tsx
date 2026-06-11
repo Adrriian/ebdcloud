@@ -1,14 +1,15 @@
+'use client'
 import { LucideMenu } from "lucide-react";
 
 
-export default function DashbordApp() {
+export default function ClassRomApp() {
     return (
-        <section id="aulas" className="p-2 dark:text-white ">
+        <div id="aulas" className="p-2 dark:text-white ">
             <div className="flex flex-col gap-4">
                 <div className="flex items-center ">
                     <div className="flex-3">
                         <h1 className="font-bold text-2xl">Aulas</h1>
-                        <h1 className="text-gray-500 text-[10px] md:text-xl lg:text-2xl  w-40 smalxl:w-full w-full">Gerencie as aulas da Escola Bíblica Dominical</h1>
+                        <h1 className="text-gray-500 text-[10px] md:text-xl lg:text-2xl   smalxl:w-full w-full">Gerencie as aulas da Escola Bíblica Dominical</h1>
                     </div>
                     <div id="newAula"
                         className="flex-1 flex p-2 gap-1 items-center rounded-2xl bg-indigo-700 cursor-pointer smalxl:w-fit hover:bg-indigo-500 transition-all duration-300 ease-linear">
@@ -45,6 +46,6 @@ export default function DashbordApp() {
                 <div id="showAulas" className="bg-slate-800 overflow-y-scroll h-80 rounded-xl p-5">
                 </div>
             </div>
-        </section>
+        </div>
     )
 }

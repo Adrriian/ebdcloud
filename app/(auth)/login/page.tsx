@@ -12,8 +12,8 @@ export default function LoginPage() {
     }
 
     const GoLogin = () => {
-        
-        router.push('../dashboard')
+
+        router.push('../classrom')
         
     }
 

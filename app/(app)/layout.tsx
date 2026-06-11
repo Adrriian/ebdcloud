@@ -2,6 +2,7 @@
 import { ReactNode, useState } from 'react';
 import '../globals.css'
 import { LucideBellRing, LucideChessKing, LucideChessQueen, LucideChurch, LucideCircleX, LucideClipboard, LucideGraduationCap, LucideKeyboard, LucideMenu, LucideMenuSquare, LucideMoonStar, LucideSchool, LucideSchool2, LucideUserRound, LucideXCircle, Menu } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 type typeReactNode = {
     children: ReactNode;
 }
@@ -14,6 +15,9 @@ export default function RootLayoutApp({ children }: typeReactNode) {
     const closeSidebar = () => {
         setWidth('w-0')
     }
+    const Router = useRouter()
+
+    
     return (
         <div className="flex">
             <aside>
@@ -32,35 +36,35 @@ export default function RootLayoutApp({ children }: typeReactNode) {
                         <hr className="text-white/50" />
                         <div className=" w-full p-2 ">
                             <nav className="flex flex-col  gap-2">
-                                <div id="classrom"
-                                    className=" flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer ">
+                                <div id="classrom"  onClick={()=> Router.push('/classrom')}
+                                    className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer ">
                                     <LucideSchool2 />
                                     <h1 className="text-white font-bold  ">Aulas</h1>
                                 </div>
-                                <div id="student"
-                                    className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="student" onClick={()=> Router.push('/student')}
+                                    className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideGraduationCap />
                                     <h1 className="text-white font-bold ">Alunos</h1>
                                 </div>
-                                <div id="board"
-                                    className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="board"  onClick={()=> Router.push('/board')}
+                                    className=" flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideChessQueen />
                                     <h1 className="text-white font-bold ">Diretoria</h1>
                                 </div>
-                                <div id="calls"
-                                    className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="calls"  onClick={()=> Router.push('/calls')}
+                                    className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideBellRing />
                                     <h1 className="text-white font-bold ">Chamadas</h1>
                                 </div>
-                                <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="book"  onClick={()=> Router.push('/book')} className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideClipboard />
                                     <h1 className="text-white font-bold ">Pedidos</h1>
                                 </div>
-                                <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="church" onClick={()=> Router.push('/church')} className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideChurch />
                                     <h1 className="text-white font-bold ">Cadastrar Nova Igreja</h1>
                                 </div>
-                                <div id="book" className="flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="user" onClick={()=> Router.push('/user')} className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideUserRound />
                                     <h1 className="text-white font-bold ">Perfil</h1>
                                 </div>
