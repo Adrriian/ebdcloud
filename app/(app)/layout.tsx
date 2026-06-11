@@ -60,11 +60,11 @@ export default function RootLayoutApp({ children }: typeReactNode) {
                                     <LucideClipboard />
                                     <h1 className="text-white font-bold ">Pedidos</h1>
                                 </div>
-                                <div id="church" onClick={()=> Router.push('/church')} className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="church" /*onClick={()=> Router.push('/church')}*/ className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideChurch />
                                     <h1 className="text-white font-bold ">Cadastrar Nova Igreja</h1>
                                 </div>
-                                <div id="user" onClick={()=> Router.push('/user')} className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
+                                <div id="user" /*nav>onClick={()=> Router.push('/user')} */className="goPush flex gap-2 items-center hover:bg-gray-500 rounded-2xl p-3 cursor-pointer">
                                     <LucideUserRound />
                                     <h1 className="text-white font-bold ">Perfil</h1>
                                 </div>
