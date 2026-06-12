@@ -1,10 +1,13 @@
 'use client'
 import { LucideCircleX, LucidePlus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getChurch } from "../student/data";
 
 export default function ChurchtApp() {
-    const role = "user"
+    const role = "admin"
     const [statusmodal, setStatusModal] = useState(false)
+    
+    
     return (
         <section id="alunos" className=" p-2 dark:text-white">
             <div className="flex flex-col gap-4">
@@ -22,10 +25,11 @@ export default function ChurchtApp() {
                     </div>
                 </div>
                 {statusmodal === true &&
+                  
                     <div className="bg-black/80 backdrop-blur-xs fixed  top-0 right-0 z-50 w-full h-full flex items-center justify-center">
                         <div className="bg-slate-800  w-4/5 h-4/5 overflow-y-scroll rounded-xl">
                             <div className="flex justify-between items-center p-5">
-                                <h1>Nova Igreja</h1>
+                                <h1>Nova Turma</h1>
                                 <div onClick={() => setStatusModal(false)} className="cursor-pointer">
                                     <LucideCircleX />
                                 </div>
@@ -33,37 +37,10 @@ export default function ChurchtApp() {
                             <hr />
                             <div className="p-5 flex flex-col gap-5 md:grid md:grid-cols-2">
                                 <div className="flex flex-col gap-5">
-                                    <h1>Nome da Igreja</h1>
+                                    <h1>Igreja</h1>
                                     <input type="text" placeholder="Nome da Igreja" className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
                                 </div>
-                                {role === 'admin' ? (
-                                    <>
-                                        <div className="flex flex-col gap-5">
-                                            <h1>Estado</h1>
-                                            <select className="text-slate-800 p-2 rounded outline-0 bg-white w-full">
-                                                <option>Selecione um Estado</option>
-                                                <option>SC</option>
-                                            </select>
-                                        </div>
-                                        <div className="flex flex-col gap-5">
-                                            <h1>Cidade:</h1>
-                                            <select className="text-slate-800 p-2 rounded outline-0 bg-white w-full">
-                                                <option>Selecione uma Cidade</option>
-                                                <option>Pouso Redondo</option>
-                                            </select>
-                                        </div>
-                                    </>) : (
-                                    <>
-                                        <div className="flex flex-col gap-5">
-                                            <h1>Estado</h1>
-                                            <input disabled type="text" value="Sc" className="text-white p-2 rounded outline-0 bg-gray-500 w-full" />
-                                        </div>
-                                        <div className="flex flex-col gap-5">
-                                            <h1>Cidade:</h1>
-                                            <input disabled type="text" value="Pouso Redondo" className="text-white p-2 rounded outline-0 bg-gray-500 w-full"  />
-                                        </div>
-                                    </>
-                                )}
+                               
 
                                 <div className="flex flex-col gap-5">
                                     <h1>Rua</h1>
@@ -80,13 +57,17 @@ export default function ChurchtApp() {
 
                             </div>
                             <hr />
-                            <div className="flex flex-col gap-5 p-5">
+                            <div className="flex flex-col gap-5 p-5  md:grid md:grid-cols-2">
                                 <div className="flex flex-col gap-5">
                                     <h1>Nome</h1>
                                     <input type="text" placeholder="Nome da Igreja" className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
                                 </div>
                                 <div className="flex flex-col gap-5">
                                     <h1>Email</h1>
+                                    <input type="text" placeholder="Nome da Igreja" className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
+                                </div>
+                                 <div className="flex flex-col gap-5">
+                                    <h1>Data de Aniversário</h1>
                                     <input type="text" placeholder="Nome da Igreja" className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
                                 </div>
                                 <div className="flex flex-col gap-5">
@@ -106,6 +87,7 @@ export default function ChurchtApp() {
 
                         </div>
                     </div>}
+                    
                 <div className="bg-slate-800 rounded-xl ">
                     <div id="renderClass" className="p-2 ">
 

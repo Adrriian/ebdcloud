@@ -1,19 +1,45 @@
 "use client";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../../globals.css";
 import { LucideEye, LucideView } from "lucide-react";
 import { useRouter } from "next/navigation"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/services/firebase.config";
+import { AuthContext } from "@/services/contexts/authContext";
+import { getData } from "./data";
+import { RoleContext } from "@/services/contexts/roleContext";
+import { IgrejaId } from "@/services/contexts/igrejaIDContext";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const router = useRouter()
-    
+    const getContextAuth = useContext(AuthContext)
+    const getContextRole = useContext(RoleContext)
+    const getContextIgrejaId = useContext(IgrejaId)
 
-    const  GoLogin = async () => {
-        const go = await signInWithEmailAndPassword(auth,'adrianraulribeiro552@gmail.com' , 'V9#rT2!mQ7@xL4$k')
-        router.push('../classrom')
+    const GoLogin = async () => {
+        const go = await signInWithEmailAndPassword(auth, 'adrianraulribeiro552@gmail.com', 'V9#rT2!mQ7@xL4$k')
+
+        if (auth.currentUser) {
+            const dataAuth = auth.currentUser.uid
+            getContextAuth?.setAuthUidValue(dataAuth)
+            const snap = await getData(dataAuth)
+
+            if(snap === null){
+                return('Deu erro, entre em contato com o suporte')
+            }else{
+                getContextRole?.setRole(snap.role)
+                getContextIgrejaId?.setIgrejaId(snap.igrejaId)
+                
+            }
+            
+            router.push('../classrom')
+        }
+
+
+        
+
+
     }
 
     return (
@@ -30,7 +56,7 @@ export default function LoginPage() {
                     </div>
 
                     <div className="flex items-center   gap-2">
-                        <input id="loginPassword" type="checkbox" className="w-5"/>   
+                        <input id="loginPassword" type="checkbox" className="w-5" />
                         <label className="text-sm font-medium text-white dark:text-slate-800">Mantenha-me Conectado</label>
                     </div>
                     <button onClick={GoLogin} className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer">

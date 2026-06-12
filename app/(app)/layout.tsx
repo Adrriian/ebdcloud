@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useContext, useEffect, useState } from 'react';
 import '../globals.css'
 import { LucideBellRing, LucideChessKing, LucideChessQueen, LucideChurch, LucideCircleX, LucideClipboard, LucideGraduationCap, LucideKeyboard, LucideMenu, LucideMenuSquare, LucideMoonStar, LucideSchool, LucideSchool2, LucideUserRound, LucideXCircle, Menu } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -7,7 +7,9 @@ type typeReactNode = {
     children: ReactNode;
 }
 import { menus } from './data'
+import { RoleContext } from '@/services/contexts/roleContext';
 export default function RootLayoutApp({ children }: typeReactNode) {
+
     const [width, setWidth] = useState('w-0')
     const openSidebar = () => {
         setWidth('w-75')
@@ -17,8 +19,20 @@ export default function RootLayoutApp({ children }: typeReactNode) {
     }
     const Router = useRouter()
     const [itemAtivo, setItemAtivo] = useState(0)
-   
-    const role = 'admin'
+
+
+    const roleContextS = useContext(RoleContext)
+    const [role, setRole] = useState('')
+    useEffect(() => {
+        if (roleContextS === null || roleContextS === undefined || roleContextS.role === '') {
+            Router.replace('/login')
+        } else {
+            setRole(roleContextS?.role)
+        }
+
+    }, [])
+
+
     return (
         <div className="flex">
             <aside>
@@ -43,7 +57,7 @@ export default function RootLayoutApp({ children }: typeReactNode) {
                                     return (
                                         <button
                                             key={index}
-                                            onClick={() => {setItemAtivo(index); Router.push(router)}}
+                                            onClick={() => { setItemAtivo(index); Router.push(router) }}
                                             className={`flex gap-2 items-center hover:bg-violet-500 rounded-2xl p-3  cursor-pointer transition-all duration-150 ease-linear
                                                 ${itemAtivo === index
                                                     ? 'bg-violet-500 text-white'
@@ -54,7 +68,7 @@ export default function RootLayoutApp({ children }: typeReactNode) {
                                         </button>
                                     )
                                 })}
-                                
+
                             </nav>
 
                         </div>
