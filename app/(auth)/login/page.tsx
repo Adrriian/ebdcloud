@@ -7,9 +7,7 @@ import { useRouter } from "next/navigation"
 export default function LoginPage() {
     const [password, setPassword] = useState("password");
     const router = useRouter()
-    const viewPassword = () => {
-        setPassword(password === "password" ? "text" : "password")
-    }
+    
 
     const GoLogin = () => {
 
@@ -30,18 +28,9 @@ export default function LoginPage() {
                             className="w-full text-white dark:text-slate-800  placeholder:text-white dark:placeholder:text-slate-800 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-medium mb-1 text-white dark:text-slate-800">Senha</label>
-
-                        <div className="flex items-center">
-                            <div className="border border-slate-800 w-full rounded-lg">
-                                <input id="loginPassword" type={password} placeholder="********" className="w-4/5 outline-0 px-4 py-2 text-white placeholder:font-bold dark:text-slate-800  placeholder:text-white dark:placeholder:text-slate-800 " />
-                            </div>
-                            <div onClick={viewPassword} className="-ml-10 cursor-pointer">
-                                <LucideEye className="dark:text-slate-800 text-white" />
-                            </div>
-
-                        </div>
+                    <div className="flex items-center   gap-2">
+                        <input id="loginPassword" type="checkbox" className="w-5"/>   
+                        <label className="text-sm font-medium text-white dark:text-slate-800">Mantenha-me Conectado</label>
                     </div>
                     <button onClick={GoLogin} className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer">
                         Entrar
