@@ -18,7 +18,7 @@ export default function RootLayoutApp({ children }: typeReactNode) {
     const Router = useRouter()
     const [itemAtivo, setItemAtivo] = useState(0)
    
-    const role = 'user'
+    const role = 'admin'
     return (
         <div className="flex">
             <aside>
@@ -44,7 +44,7 @@ export default function RootLayoutApp({ children }: typeReactNode) {
                                         <button
                                             key={index}
                                             onClick={() => {setItemAtivo(index); Router.push(router)}}
-                                            className={`flex gap-2 items-center hover:bg-violet-500 rounded-2xl p-3  cursor-pointer transition-colors
+                                            className={`flex gap-2 items-center hover:bg-violet-500 rounded-2xl p-3  cursor-pointer transition-all duration-150 ease-linear
                                                 ${itemAtivo === index
                                                     ? 'bg-violet-500 text-white'
                                                     : 'bg-violet-800 text-white'

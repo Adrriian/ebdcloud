@@ -3,16 +3,17 @@ import { useState } from "react";
 import "../../globals.css";
 import { LucideEye, LucideView } from "lucide-react";
 import { useRouter } from "next/navigation"
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/services/firebase.config";
 
 export default function LoginPage() {
-    const [password, setPassword] = useState("password");
+    const [email, setEmail] = useState("");
     const router = useRouter()
     
 
-    const GoLogin = () => {
-
+    const  GoLogin = async () => {
+        const go = await signInWithEmailAndPassword(auth,'adrianraulribeiro552@gmail.com' , 'V9#rT2!mQ7@xL4$k')
         router.push('../classrom')
-        
     }
 
     return (
@@ -24,7 +25,7 @@ export default function LoginPage() {
 
                     <div>
                         <label className="block text-sm font-medium mb-1 text-white dark:text-slate-800">Email</label>
-                        <input id="loginEmail" type="email" placeholder="seu@email.com"
+                        <input id="loginEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com"
                             className="w-full text-white dark:text-slate-800  placeholder:text-white dark:placeholder:text-slate-800 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
 
