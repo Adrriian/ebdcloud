@@ -1,16 +1,20 @@
 'use client'
 import { LucideCircleX, LucideUserPlus, LucideUserPlus2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getChurch } from "./data";
+import { IgrejaId } from "@/services/contexts/igrejaIDContext";
+
 
 export default function StudentApp() {
     const [modal, setModal] = useState(false)
-    const [dataChurch, setDataChurch] = useState<any>(null)
+    const [dataChurch, setDataChurch] = useState<any>('')
     const [carregar, setCarregar] = useState(true)
-    useEffect(() => {
+    const id = useContext(IgrejaId)
+    console.log(id?.igrejaId)
+    /*useEffect(() => {
         async function renderChurch() {
             try {
-                const data = await getChurch()
+                const data = await getChurch(id?.igrejaId)
                 setDataChurch(data)
             }
             catch (error) {
@@ -21,9 +25,9 @@ export default function StudentApp() {
         }
 
         renderChurch()
-    }, [])
+    }, [])*/
     console.log(dataChurch)
- 
+
     return (
         <section id="alunos" className=" p-2 dark:text-white">
             <div className="flex flex-col gap-4">
@@ -71,7 +75,7 @@ export default function StudentApp() {
                                     </div>
                                     <div className="flex flex-col gap-5">
                                         <h1>Nome da Igreja</h1>
-                                        <input disabled type="text" placeholder={dataChurch[0].name} value={dataChurch.name} className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
+                                        <input disabled type="text" placeholder='ola' value={dataChurch.name} className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
                                     </div>
                                     <div className="flex flex-col gap-5">
                                         <h1>Congregação</h1>
@@ -83,7 +87,7 @@ export default function StudentApp() {
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <hr />
                                 <div className="flex flex-col gap-5 p-5 md:justify-center md:items-center">
                                     <div className="flex w-full md:w-md p-5 items-center justify-center bg-violet-700 hover:bg-violet-500 rounded-2xl cursor-pointer transition-all duration-300 ease-linear">
