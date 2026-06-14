@@ -10,8 +10,8 @@ export default function StudentApp() {
     const [dataChurch, setDataChurch] = useState<any>('')
     const [carregar, setCarregar] = useState(true)
     const id = useContext(IgrejaId)
-    console.log(id?.igrejaId)
-    /*useEffect(() => {
+  
+    useEffect(() => {
         async function renderChurch() {
             try {
                 const data = await getChurch(id?.igrejaId)
@@ -25,7 +25,7 @@ export default function StudentApp() {
         }
 
         renderChurch()
-    }, [])*/
+    }, [])
     console.log(dataChurch)
 
     return (
@@ -75,7 +75,7 @@ export default function StudentApp() {
                                     </div>
                                     <div className="flex flex-col gap-5">
                                         <h1>Nome da Igreja</h1>
-                                        <input disabled type="text" placeholder='ola' value={dataChurch.name} className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
+                                        <input disabled type="text" placeholder={dataChurch[0].name} value={dataChurch[0].name} className="text-slate-800 p-2 rounded outline-0 bg-white w-full" />
                                     </div>
                                     <div className="flex flex-col gap-5">
                                         <h1>Congregação</h1>
@@ -91,7 +91,7 @@ export default function StudentApp() {
                                 <hr />
                                 <div className="flex flex-col gap-5 p-5 md:justify-center md:items-center">
                                     <div className="flex w-full md:w-md p-5 items-center justify-center bg-violet-700 hover:bg-violet-500 rounded-2xl cursor-pointer transition-all duration-300 ease-linear">
-                                        <h1 >Cadastrar Igreja</h1>
+                                        <h1 >Cadastrar Aluno</h1>
                                     </div>
                                 </div>
 

@@ -25,19 +25,40 @@ export default function LoginPage() {
             getContextAuth?.setAuthUidValue(dataAuth)
             const snap = await getData(dataAuth)
 
-            if(snap === null){
-                return('Deu erro, entre em contato com o suporte')
-            }else{
-                getContextRole?.setRole(snap.role)
-                getContextIgrejaId?.setIgrejaId(snap.igrejaId)
-                
+            if (snap === null) {
+                return ('Deu erro, entre em contato com o suporte')
+            } else {
+                if (
+                    snap.role !== 'admin' &&
+                    snap.role !== 'coordenador' &&
+                    snap.role !== 'alunos' &&
+                    snap.role !== 'pastorpresidente' &&
+                    snap.role !== 'pastorlocal' &&
+                    snap.role !== 'lider' &&
+                    snap.role !== 'musico' &&
+                    snap.role !== 'auxiliar' &&
+                    snap.role !== 'secretaria'
+                ) {
+                    alert('Deu erro, entre em contato com o suporte');
+                    return;
+                } else {
+                    getContextRole?.setRole(snap.role)
+                    getContextIgrejaId?.setIgrejaId(snap.igrejaid)
+                }
+
+
+
+
             }
-            
+
+            getContextRole?.setRole(snap.role)
+            getContextIgrejaId?.setIgrejaId(snap.igrejaid)
+
             router.push('../classrom')
         }
 
 
-        
+
 
 
     }
