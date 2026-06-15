@@ -6,7 +6,8 @@ import { useState } from "react";
 export type StateType ={
     id:number,
     nome:string,
-    sigla:string
+    sigla:string,
+   
 }
 export async function getStatesData():Promise<StateType[]> {
     try {

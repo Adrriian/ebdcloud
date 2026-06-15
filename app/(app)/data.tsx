@@ -1,4 +1,4 @@
-import { LucideBellRing, LucideChessQueen, LucideChurch, LucideClipboard, LucideGraduationCap, LucideSchool2, LucideUserRound } from "lucide-react";
+import { LucideBellRing, LucideChessQueen, LucideChurch, LucideClipboard, LucideGraduationCap, LucideLayoutDashboard, LucideSchool2, LucideUserRound } from "lucide-react";
 
 export const menus = [
     {
@@ -17,10 +17,13 @@ export const menus = [
         name: "Pedidos", icon: <LucideClipboard />, role: ['admin', 'coordenador', 'alunos', 'pastorpresidente', 'pastorlocal', 'lider','musico','auxiliar','secretaria'], router: '/book'
     },
     {
-        name: "Cadastrar Nova Igreja", icon: <LucideChurch />, role: ['admin','coordenador',], router: '/church'
+        name: "Cadastrar Nova Igreja Campo", icon: <LucideChurch />, role: ['admin','coordenador',], router: '/churchcampo'
     },
     {
         name: "Perfil", icon: <LucideUserRound />, role: ['admin', 'coordenador', 'alunos', 'pastorpresidente', 'pastorlocal', 'lider','musico','auxiliar','secretaria'], router: '/user'
 
+    },
+    {
+        name: "Dashboard", icon: <LucideLayoutDashboard />, role: ['admin'], router: '/dashboard'
     },
 ]

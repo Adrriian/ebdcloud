@@ -18,13 +18,23 @@ export default function LoginPage() {
     const getContextIgrejaId = useContext(IgrejaId)
 
     const GoLogin = async () => {
-        const go = await signInWithEmailAndPassword(auth, 'adrianraulribeiro552@gmail.com', 'V9#rT2!mQ7@xL4$k')
+
+        try {
+            await signInWithEmailAndPassword(auth, 'adrianraulribeiro553@gmail.com', 'V9#rT2!mQ7@xL4$k');
+
+            console.log("Login realizado");
+        } catch (error) {
+            console.log("Erro:", error);
+        }
 
         if (auth.currentUser) {
             const dataAuth = auth.currentUser.uid
+            console.log(auth.currentUser.uid)
             getContextAuth?.setAuthUidValue(dataAuth)
             const snap = await getData(dataAuth)
-
+            console.log("UID:", dataAuth)
+            console.log("Snap:", snap)
+            
             if (snap === null) {
                 return ('Deu erro, entre em contato com o suporte')
             } else {
@@ -40,6 +50,7 @@ export default function LoginPage() {
                     snap.role !== 'secretaria'
                 ) {
                     alert('Deu erro, entre em contato com o suporte');
+                    console.log("Role:", snap.role);
                     return;
                 } else {
                     getContextRole?.setRole(snap.role)

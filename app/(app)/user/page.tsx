@@ -1,17 +1,30 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import { getDados } from "./data";
+import { useContext, useEffect, useState } from "react";
+import { dataUser, getDados } from "./data/downData";
+import { LucideLock } from "lucide-react";
+import { AuthContext } from "@/services/contexts/authContext";
+import { updateData } from "./functions/changeData";
 
 export default function UsertApp() {
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<dataUser>()
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
     const [carregar, setCarregar] = useState(true)
-    
+    const auth = useContext(AuthContext)
     useEffect(() => {
         async function carregarDados() {
+
+
             try {
-                const data = await getDados()
-                setUser(data)
+                if (auth?.AuthUidValue) {
+                    const data = await getDados(auth.AuthUidValue);
+                    if (data) {
+                        setUser(data)
+                    }
+
+                }
+
             } catch (error) {
                 console.log(error)
             } finally {
@@ -21,7 +34,6 @@ export default function UsertApp() {
         }
         carregarDados()
     }, [])
-
 
 
 
@@ -53,79 +65,88 @@ export default function UsertApp() {
             <h1 className="text-3xl font-bold mb-8">
                 Meu Perfil
             </h1>
-
             <div className="bg-white dark:bg-zinc-900 rounded-xl shadow p-6">
-
-                {/* Cabeçalho */}
                 <div className="flex items-center gap-5 border-b pb-6 mb-6">
-
-                    <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-3xl font-bold">
-                        <h1 className="text-slate-800">{user[0].name.slice(0,1)}</h1>
+                    <div className="w-14 h-14 rounded-full p-5 bg-gray-200 flex items-center justify-center text-xl font-bold">
+                        <h1 className="text-slate-800">{user?.name.slice(0, 1)}</h1>
                     </div>
-
                     <div>
-                        <h2 className="text-2xl text-white font-semibold">
-                            {user[0].name}
+                        <h2 className="text-sm text-white font-semibold">
+                            {user?.name}
                         </h2>
-
-                        <p className="text-gray-500">
-                            {user[0].position}
+                        <p className="text-sm text-gray-500">
+                            {user?.role}
                         </p>
-
-                        <p className="text-sm text-gray-400">
-                            {user[0].email}
+                        <p className="text-[10px] text-gray-400">
+                            {user?.email}
                         </p>
                     </div>
-
                 </div>
-
-                {/* Informações */}
-                <div className="grid md:grid-cols-2 gap-6">
-
+                <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                         <label className="font-medium">
                             Nome Completo
                         </label>
-
-                        <input disabled
-                            className="w-full mt-2  rounded-lg p-3 bg-gray-700" value={user[0].name}
-                            placeholder="Nome completo"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="font-medium">
-                            E-mail
-                        </label>
-
-                        <input disabled
+                        <input type="text"
                             className="w-full mt-2  rounded-lg p-3 bg-gray-700"
-                            placeholder="Email" value={user[0].email}
+                            placeholder={user?.name} value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                     </div>
-
+                    <div>
+                        <div className="flex items-center gap-3 ">
+                            <label className="font-medium">
+                                E-mail
+                            </label>
+                            <LucideLock className="md:hidden" color={'gray'} size={18} />
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <input disabled
+                                className="w-full mt-2  rounded-lg p-3 bg-gray-700"
+                                placeholder={user?.email}
+                            />
+                            <div className="-ml-12 mt-2 p-3 hidden md:flex ">
+                                <LucideLock color={'gray'} size={20} />
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <label className="font-medium">
                             Telefone
                         </label>
 
-                        <input disabled
+                        <input type="number"
                             className="w-full mt-2  rounded-lg p-3 bg-gray-700"
-                            placeholder="Telefone" value={user[0].phone}
+                            placeholder={user?.phone} value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                         />
                     </div>
-
                     <div>
-                        <label className="font-medium">
-                            Cargo
-                        </label>
-                        <input onClick={()=>{}} disabled
-                            className="w-full mt-2  rounded-lg p-3 bg-gray-700"
-                            placeholder="Telefone" value={user[0].position}
-                        />
+                        <div className="flex items-center gap-3 ">
+                            <label className="font-medium">
+                                Cargo
+                            </label>
+                            <LucideLock className="md:hidden" color={'gray'} size={18} />
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <input onClick={() => { }} disabled
+                                className="w-full mt-2  rounded-lg p-3 bg-gray-700"
+                                placeholder={user?.role}
+                            />
+                            <div className="-ml-12 mt-2 p-3 hidden md:flex">
+                                <LucideLock color={'gray'} size={20} />
+                            </div>
 
+                        </div>
                     </div>
-
+                </div>
+                <div className="w-full flex items-center justify-center">
+                    <div onClick={() => {
+                        updateData({ phone, name, uid:auth?.AuthUidValue })
+                    }}
+                        className="bg-violet-500 mt-5 w-full sm:w-50 hover:bg-violet-700 flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                        <h1>Trocar Dados</h1>
+                    </div>
                 </div>
 
                 {/* Alterar senha 

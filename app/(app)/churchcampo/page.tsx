@@ -4,10 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { getChurch } from "../student/data";
 import { RoleContext } from "@/services/contexts/roleContext";
 import { IgrejaId } from "@/services/contexts/igrejaIDContext";
-import getdataChurch from "./data";
-import getAdminUser from "./data2";
-import ComponentStates from "./component/states";
-import ComponentCities from "./component/cities";
+
 
 export default function ChurchtApp() {
     const [stateId, setStateId] = useState('')
@@ -17,23 +14,7 @@ export default function ChurchtApp() {
     const [carregar, setCarregar] = useState(true)
     const [dataChurch, setDataChurch] = useState<any>()
     const [dataChurchAdmin, setDataChurchAdmin] = useState<any>()
-    useEffect(() => {
-        async function renderClass() {
-            try {
-                const data2 = await getAdminUser()
-                setDataChurchAdmin(data2)
-
-            } catch (error) {
-                console.log(error)
-            } finally {
-                setCarregar(false)
-            }
-
-        }
-        renderClass()
-    }, [])
-
-    console.log(dataChurchAdmin);
+    
     return (
         <section id="alunos" className=" p-2 dark:text-white">
             <div className="flex flex-col gap-4">
@@ -74,17 +55,12 @@ export default function ChurchtApp() {
                                         </div>
                                         <div className="flex flex-col gap-5">
                                             <h1>Estado</h1>
-                                            <ComponentStates
-                                                stateId={stateId}
-                                                setStateId={setStateId}
-                                            />
+                                            
                                         </div>
 
                                         <div className="flex flex-col gap-5">
                                             <h1>Cidade</h1>
-                                            <ComponentCities
-                                                stateId={stateId}
-                                            />
+                                            
                                         </div>
                                         <div className="flex flex-col gap-5">
                                             <h1>Rua</h1>
