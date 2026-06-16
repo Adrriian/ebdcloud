@@ -150,8 +150,8 @@ export default function UsertApp() {
                     </div>
                 </div>
 
-                {/* Alterar senha 
-                <div className="mt-10 border-t pt-8">
+               
+                {/*<div className="mt-10 border-t pt-8">
 
                     <h2 className="text-xl font-semibold mb-5">
                         Alterar Senha

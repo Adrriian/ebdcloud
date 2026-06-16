@@ -17,7 +17,7 @@ export const menus = [
         name: "Pedidos", icon: <LucideClipboard />, role: ['admin', 'coordenador', 'alunos', 'pastorpresidente', 'pastorlocal', 'lider','musico','auxiliar','secretaria'], router: '/book'
     },
     {
-        name: "Cadastrar Nova Igreja Campo", icon: <LucideChurch />, role: ['admin','coordenador',], router: '/churchcampo'
+        name: "Cadastrar Nova Igreja Campo", icon: <LucideChurch />, role: ['admin','coordenador',], router: '/churchcampo/igreja'
     },
     {
         name: "Perfil", icon: <LucideUserRound />, role: ['admin', 'coordenador', 'alunos', 'pastorpresidente', 'pastorlocal', 'lider','musico','auxiliar','secretaria'], router: '/user'
