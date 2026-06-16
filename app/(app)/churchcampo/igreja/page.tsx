@@ -1,7 +1,7 @@
 'use client'
 import { LucideCircle, LucideCircleX, LucidePlus } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
-import { getChurch } from "../student/data";
+import { getChurch } from "../../student/data";
 import { RoleContext } from "@/services/contexts/roleContext";
 import { IgrejaId } from "@/services/contexts/igrejaIDContext";
 
