@@ -20,7 +20,7 @@ export default function LoginPage() {
     const GoLogin = async () => {
 
         try {
-            await signInWithEmailAndPassword(auth, 'adrianraulribeiro553@gmail.com', 'V9#rT2!mQ7@xL4$k');
+            await signInWithEmailAndPassword(auth, 'adrianraulribeiro552@gmail.com', 'V9#rT2!mQ7@xL4$k');
 
             console.log("Login realizado");
         } catch (error) {
