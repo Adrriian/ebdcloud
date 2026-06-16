@@ -142,6 +142,7 @@ export default function UsertApp() {
                 </div>
                 <div className="w-full flex items-center justify-center">
                     <div onClick={() => {
+                        if (!auth?.AuthUidValue) return null
                         updateData({ phone, name, uid:auth?.AuthUidValue })
                     }}
                         className="bg-violet-500 mt-5 w-full sm:w-50 hover:bg-violet-700 flex items-center justify-center p-3 rounded-lg cursor-pointer">
