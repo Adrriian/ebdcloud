@@ -221,9 +221,9 @@ export default function ChurchtApp() {
                     ) :
                         (
                             dataChurch.map((item) => (
-                                <div>
+                                
                                     <ShowChurch key={item.id} nameChurch={item.nameChurch} city={item.city} status={item.status} />
-                                </div>
+                                
                             ))
                         )
                     )}
